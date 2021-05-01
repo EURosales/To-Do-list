@@ -60,14 +60,15 @@
                 </div>
                 <div class="task-register">
                     <!--Aqui sehace el registro de nuevas tareas-->
-                    <form action="" name="" id="taskRegisterForm">
+                    <form action="post" name="taskRegisterForm" id="taskRegisterForm">
                         <div class="input-field">
                             <label for="task-name" class="task-name"><i class="fas fa-bookmark"></i> Task name:</label>
                             <input type="text" id="taskName" placeholder="ej. Bañar al perro" required>
                             <small class="visual-clue-input hide">Required</small>
                         </div>
                         <div class="input-field">
-                            <label for="task-name" class="task-name"><i class="fas fa-calendar-alt"></i> Task
+                            <label for="task-name" class="task-name "><i class="fas fa-calendar-alt"></i>
+                                Task
                                 time:</label>
                             <input type="date" id="taskDate" required>
                             <small class="visual-clue-input hide">Required</small>
@@ -110,7 +111,7 @@
                         <div class="description">
                             <label for="task-name" class="task-name"><i class="fas fa-comment-alt"></i> Task
                                 description:</label>
-                            <textarea name="" id="taskDescription"></textarea>
+                            <textarea name="" id="taskDescription" required></textarea>
                             <small class="visual-clue-input hide">Required</small>
                         </div>
                         <div class="save-btn">
@@ -126,6 +127,7 @@
         </main>
 
         <script src="js/main.js"></script>
+        <script src="js/validate.js"></script>
     </body>
 
 </html>

@@ -192,11 +192,6 @@ article {
                 }
             }
 
-            .empty {
-                transition: 0.2s;
-                border-bottom: 3px solid red !important;
-            }
-
             small {
                 font-weight: 600;
                 font-size: 12px;
@@ -358,4 +353,9 @@ footer {
 
 .hide {
     display: none !important;
+}
+
+.empty-wrong {
+    transition: 0.2s;
+    border-bottom: 3px solid red !important;
 }

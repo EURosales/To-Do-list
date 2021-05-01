@@ -1,13 +1,16 @@
-document.getElementById('contactForm').addEventListener('submit', submitForm);
+document.getElementById('taskRegisterForm').addEventListener('submit', submitForm);
 
 function submitForm(e) {
     e.preventDefault();
-    //get value from inputs
-    let name = getInputVal('nameField');
-    let age = getInputVal('ageField');
 
-    saveData(name, age);
-    getData();
+    //get value from inputs
+    let taskName = getInputVal('taskName');
+    let taskDate = getInputVal('taskDate');
+    let taskDescription = getInputVal('taskDescription');
+    let priorVal;
+
+    saveData(taskName, taskDate, taskDescription, priorVal);
+    //getData();
 }
 
 function getInputVal(id) {
@@ -15,13 +18,15 @@ function getInputVal(id) {
 }
 
 //Reference messages collection
-let messagesRef = firebase.database().ref('Messages');
+let taskRef = firebase.database().ref('Tasks');
 
 //Save the messages to the database
-function saveData(name, age) {
-    let newMessageRef = messagesRef.push();
-    newMessageRef.set({
-        name: name,
-        age: age,
+function saveData(taskName, taskDate, taskDescription, priorVal) {
+    let newTaskRef = taskRef.push();
+    newTaskRef.set({
+        taskName: taskName,
+        taskDate: taskDate,
+        taskDescription: taskDescription,
+        priorVal: priorVal,
     });
 }

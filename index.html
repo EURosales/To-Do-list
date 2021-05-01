@@ -12,8 +12,8 @@
 
     <body>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
         <script src="js/database.js"></script>
 
         <main>
@@ -29,7 +29,7 @@
                 </ul>
             </section>
             <article class="content-viewer">
-                <div class="task-viewer">
+                <div class="task-viewer hide">
                     <!--Aqui iran las tajetas por cada tarjeta (cada tarjeta es una tarea)-->
                     <div class="task">
                         <div class="task-header important">
@@ -58,9 +58,71 @@
                         suscipit nobis!
                     </div>
                 </div>
-                <div class="task-register hide"></div>
+                <div class="task-register">
+                    <!--Aqui sehace el registro de nuevas tareas-->
+                    <form action="" name="" id="taskRegisterForm">
+                        <div class="input-field">
+                            <label for="task-name" class="task-name"><i class="fas fa-bookmark"></i> Task name:</label>
+                            <input type="text" id="taskName" placeholder="ej. Bañar al perro" required>
+                            <small class="visual-clue-input hide">Required</small>
+                        </div>
+                        <div class="input-field">
+                            <label for="task-name" class="task-name"><i class="fas fa-calendar-alt"></i> Task
+                                time:</label>
+                            <input type="date" id="taskDate" required>
+                            <small class="visual-clue-input hide">Required</small>
+                        </div>
+                        <div class="prior-options-title">
+                            <p><i class="fas fa-layer-group"></i> Select a level of priority for the task:</p>
+                        </div>
+                        <div class="multi-option-group">
+
+                            <div class="option-group">
+
+                                <div class="prior-option high">
+                                    <label for="priorHigh">
+                                        <i class="fas fa-thermometer-full"></i>
+                                        <input type="radio" name="priority" id="priorHigh" value="1">
+                                        High
+                                    </label>
+                                </div>
+
+                                <div class="prior-option mid">
+                                    <label for="priorMid">
+                                        <i class="fas fa-thermometer-half"></i>
+                                        <input type="radio" name="priority" id="priorMid" value="2">
+                                        Mid
+                                    </label>
+                                </div>
+
+                                <div class="prior-option less">
+                                    <label for="priorNormal">
+                                        <i class="fas fa-thermometer-empty"></i>
+                                        <input type="radio" name="priority" id="priorNormal" value="3">
+                                        Normal
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <small class="visual-clue-input hide">Required</small>
+                        </div>
+                        <div class="description">
+                            <label for="task-name" class="task-name"><i class="fas fa-comment-alt"></i> Task
+                                description:</label>
+                            <textarea name="" id="taskDescription"></textarea>
+                            <small class="visual-clue-input hide">Required</small>
+                        </div>
+                        <div class="save-btn">
+                            <a class="act-button save-task" type="submit" href="####"><i
+                                    class="fas fa-cloud-upload-alt"></i> Save
+                                Task</a>
+                        </div>
+
+                    </form>
+                </div>
             </article>
-            <footer></footer>
+            <footer>Made by Eduardo Rosales</footer>
         </main>
 
         <script src="js/main.js"></script>

@@ -19,46 +19,39 @@
         <main>
             <header>
                 <h1>To-Do List</h1>
-                <h2 class="title">All Tasks</h2>
             </header>
             <section>
+                <h2 class="title">All Tasks:</h2>
                 <a class="act-button new-task" href="#"><i class="fas fa-plus-circle"></i> New Task</a>
+
                 <ul class="hide">
                     <li><a class="act-button new-task" id="newTask" href="#">New task</a></li>
                     <li><a class="act-button view-task active" id="viewTask" href="#">View tasks</a></li>
                 </ul>
             </section>
             <article class="content-viewer">
-                <div class="task-viewer hide">
+                <div class="task-viewer ">
                     <!--Aqui iran las tajetas por cada tarjeta (cada tarjeta es una tarea)-->
-                    <div class="task">
-                        <div class="task-header important">
-                            <p>Priority: Important</p>
+                    <div class="card-task">
+                        <div class="card-task-header important">
+                            <p class="priority-category">Important</p>
                         </div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio, laboriosam incidunt illum,
-                        nihil voluptas distinctio est nulla dolores non error amet consequuntur odit at. Sequi non quam
-                        suscipit nobis!
+                        <div class="card-task-header-info">
+                            <h3 class="card-task-Title">Title of task 1</h3>
+                            <span class="card-task-date">Deadline:2001-09-06</span>
+                        </div>
+                        <div class="card-task-body-info">
+                            <p class="card-description">
+                                This is the task description
+                            </p>
+                        </div>
+                        <div class="card-task-footer">
+                            <button onclick="func_Dat_Deletes_Card();">Mark as completed</button>
+                        </div>
                     </div>
 
-                    <div class="task">
-                        <div class="task-header medium">
-                            <p>Priority: Important</p>
-                        </div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio, laboriosam incidunt illum,
-                        nihil voluptas distinctio est nulla dolores non error amet consequuntur odit at. Sequi non quam
-                        suscipit nobis!
-                    </div>
-
-                    <div class="task">
-                        <div class="task-header little">
-                            <p>Priority: Important</p>
-                        </div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odio, laboriosam incidunt illum,
-                        nihil voluptas distinctio est nulla dolores non error amet consequuntur odit at. Sequi non quam
-                        suscipit nobis!
-                    </div>
                 </div>
-                <div class="task-register">
+                <div class="task-register ">
                     <!--Aqui sehace el registro de nuevas tareas-->
                     <form action="post" name="taskRegisterForm" id="taskRegisterForm">
                         <div class="input-field">
@@ -70,7 +63,7 @@
                             <label for="task-name" class="task-name "><i class="fas fa-calendar-alt"></i>
                                 Task
                                 time:</label>
-                            <input type="date" id="taskDate" required>
+                            <input type="datetime-local" id="taskDate" required>
                             <small class="visual-clue-input hide">Required</small>
                         </div>
                         <div class="prior-options-title">
@@ -115,10 +108,12 @@
                             <small class="visual-clue-input hide">Required</small>
                         </div>
                         <div class="save-btn">
-                            <a class="act-button save-task" type="submit" href="####"><i
-                                    class="fas fa-cloud-upload-alt"></i> Save
+                            <button class="act-button save-task" type="submit">
+                                <i class="fas fa-cloud-upload-alt"></i> Save
                                 Task</a>
+                            </button>
                         </div>
+
 
                     </form>
                 </div>

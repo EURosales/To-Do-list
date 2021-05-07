@@ -37,6 +37,7 @@ header {
     justify-content: center;
     flex-direction: column;
     padding: 0.5rem 0;
+    margin-bottom: 1.5rem;
 
     h1 {
         letter-spacing: -2px;
@@ -44,26 +45,26 @@ header {
         font-size: 2.5rem;
         color: hsl(0, 0%, 15%);
     }
-
-    h2 {
-        //letter-spacing: -1px;
-        font-weight: 500;
-        font-size: 2rem;
-        color: hsl(0, 0%, 15%);
-        margin-top: 1rem;
-    }
 }
 
 section {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 0.5rem;
+
+    h2 {
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-size: 2rem;
+        color: hsl(0, 0%, 15%);
+        //margin-top: 1rem;
+    }
 
     a {
         text-decoration: none;
         background-color: rgb(59, 31, 161);
-        padding: 1rem;
+        padding: 0.6rem 0.8rem;
         color: white;
         border-radius: 6px;
         border: none;
@@ -109,7 +110,7 @@ section {
 }
 
 article {
-    margin: 1rem 0.5rem;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
 
     .task-viewer {
         border-radius: 6px;
@@ -122,25 +123,31 @@ article {
         flex-direction: column;
         justify-content: center;
 
-        .task {
+        .card-task {
             background-color: rgb(255, 255, 255);
             border-radius: 6px;
-            width: 85%;
-            padding: 0.5rem;
+            width: 99%;
+            padding: 0 0.5rem;
             margin: 0.5rem 0;
 
-            .task-header {
-                padding: 0.5rem;
+            .card-task-header {
+                padding: 0.2rem;
                 color: white;
 
                 &.important {
-                    background-color: rgb(202, 39, 39);
+                    background: #d82335;
+                        background: -webkit-linear-gradient(to left, #f04526, #d82335);
+                        background: linear-gradient(to left, #f04526, #d82335);
                 }
                 &.medium {
-                    background-color: rgb(240, 214, 68);
+                    background: #fdc830;
+                        background: -webkit-linear-gradient(to right, #f37335, #fdc830);
+                        background: linear-gradient(to right, #f37335, #fdc830);
                 }
                 &.little {
-                    background-color: rgb(39, 202, 93);
+                    background: #11998e;
+                        background: -webkit-linear-gradient(to left, #38ef7d, #11998e);
+                        background: linear-gradient(to left, #38ef7d, #11998e);
                 }
             }
         }
@@ -179,6 +186,10 @@ article {
                 font-weight: 600 !important;
                 font-size: 1rem;
                 font-family: 'Quicksand', sans-serif;
+
+                // &[required] {
+                //     border-bottom: 20px solid rgb(0, 138, 69);
+                // }
 
                 &:hover {
                     transition: 0.2s;
@@ -251,7 +262,7 @@ article {
 
                     &.high {
                         background: #d82335;
-                        background: -webkit-linear-gradient(to right, #ef473a, #d82335);
+                        background: -webkit-linear-gradient(to right, #f84a2b, #d82335);
                         background: linear-gradient(to right, #ef473a, #d82335);
                     }
 
@@ -319,7 +330,7 @@ article {
             display: flex;
             justify-content: center;
 
-            a {
+            button {
                 text-decoration: none;
                 background-color: rgb(48, 187, 102);
                 padding: 1rem;

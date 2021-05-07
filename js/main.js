@@ -1,5 +1,5 @@
 document.getElementById('taskRegisterForm').addEventListener('submit', saveTask);
-const card = document.querySelector('.card-task');
+const card = document.querySelector('.card');
 const cardHeader = document.querySelector('.card-task-header');
 const priorityLevel = document.querySelector('.priority-category');
 
@@ -13,7 +13,6 @@ function saveTask(e) {
     let priorVal = document.forms['taskRegisterForm']['priority'].value;
     console.log(priorVal);
     empty(taskName, taskDate, taskDescription, priorVal);
-
     //getData();
 }
 
@@ -40,7 +39,6 @@ function saveData(taskName, taskDate, taskDescription, priorVal) {
 //Fetch data
 let ref = firebase.database().ref('Tasks');
 ref.on('value', getData);
-
 let priority;
 
 function getData(data) {
@@ -58,34 +56,24 @@ function getData(data) {
         dateOrderedData.push(information[content]);
 
         card.innerHTML += `
-
-        <div class="card-task-header important">
+        <div class="card-task">
+            <div class="card-task-header important">
             <p class="priority-category">${tPriority}</p>
         </div>
         <div class="card-task-header-info">
-            <h3 class="card-task-Title">${tName}</h3>
-            <span class="card-task-date">${tTime}</span>
+            <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
+            <span class="card-task-date">Due: ${tTime}</span>
         </div>
         <div class="card-task-body-info">
             <p class="card-description">${tDescription}</p>
         </div>
         <div class="card-task-footer">
-            <button onclick="func_Dat_Deletes_Card();">Mark as completed</button>
+            <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
         </div>
-
+        </div>
         `;
-
-        //      info.innerHTML += `
-        //   </div>
-        //   <p class="color"><strong>Name:</strong>${name}<br>
-        //   <a><strong>Email:</strong>${email}</a><br>
-        //   <a><strong>Message:</strong>${message}</a>
-        //   </p>
-        //   </div>
-        //   `;
     }
     dateOrderedData.sort((a, b) =>
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );
-    console.table(dateOrderedData);
 }

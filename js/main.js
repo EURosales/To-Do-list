@@ -42,7 +42,12 @@ let priority;
 function getData(data) {
     let information = data.val();
     let keys = Object.keys(information);
-    let dateOrderedData = [];
+    let dateOrderedData = [],
+        onlyHigh,
+        onlyMid,
+        onlyLittle,
+        highToLow,
+        lowToHigh;
 
     for (let i = 0; i < keys.length; i++) {
         let content = keys[i];
@@ -71,7 +76,7 @@ function getData(data) {
         card.innerHTML += `
         <div class="card-task">
             <div class="card-task-header ${finalPriority}" id="card-task-header">
-            <p class="priority-category">${finalPriority}</p>
+            <p class="priority-category">Prioriry: ${finalPriority}</p>
         </div>
         <div class="card-task-header-info">
             <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
@@ -87,7 +92,35 @@ function getData(data) {
         `;
     }
 
+    //ordenadas por fecha
+
     dateOrderedData.sort((a, b) =>
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );
+    console.log(dateOrderedData);
+
+    //filtrados por prioridad
+
+    onlyHigh = dateOrderedData.filter((prior) => prior.priorVal == '1');
+    console.log(onlyHigh);
+
+    onlyMid = dateOrderedData.filter((prior) => prior.priorVal == '2');
+    console.log(onlyMid);
+
+    onlyLittle = dateOrderedData.filter((prior) => prior.priorVal == '3');
+    console.log(onlyLittle);
+
+    //de mayor a menor prioridad
+
+    highToLow = dateOrderedData.sort((a, b) =>
+        a.priorVal < b.priorVal ? -1 : a.priorVal > b.priorVal ? 1 : 0
+    );
+    console.log(highToLow);
+
+    //de menor a mayor prioridad
+
+    lowToHigh = dateOrderedData.sort((a, b) =>
+        b.priorVal < a.priorVal ? -1 : b.priorVal > a.priorVal ? 1 : 0
+    );
+    console.log(lowToHigh);
 }

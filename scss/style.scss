@@ -124,7 +124,23 @@ article {
         justify-content: center;
 
         .select-container {
-            padding-bottom: 0.8em;
+            padding-bottom: 1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            label {
+                font-weight: 600;
+                font-size: 1.2em;
+            }
+
+            select {
+                margin: 0.5em;
+                padding: 0.35em;
+                border-radius: 5px;
+                font-weight: 500;
+            }
         }
 
         .card-task {

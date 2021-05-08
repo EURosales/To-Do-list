@@ -1,6 +1,6 @@
 document.getElementById('taskRegisterForm').addEventListener('submit', saveTask);
 const card = document.querySelector('.card');
-const cardHeader = document.querySelector('.card-task-header');
+const cardHeader = document.getElementById('card-task-header');
 const priorityLevel = document.querySelector('.priority-category');
 
 function saveTask(e) {
@@ -11,7 +11,6 @@ function saveTask(e) {
     let taskDate = getInputVal('taskDate');
     let taskDescription = getInputVal('taskDescription');
     let priorVal = document.forms['taskRegisterForm']['priority'].value;
-    console.log(priorVal);
     empty(taskName, taskDate, taskDescription, priorVal);
     //getData();
 }
@@ -27,7 +26,6 @@ let taskRef = firebase.database().ref('Tasks');
 function saveData(taskName, taskDate, taskDescription, priorVal) {
     card.innerHTML = '';
     let newTaskRef = taskRef.push();
-    console.log('LLegamos hasta la función de SAVEDATA()!');
     newTaskRef.set({
         taskName: taskName,
         taskDate: taskDate,
@@ -52,13 +50,28 @@ function getData(data) {
         let tName = information[content].taskName;
         let tTime = information[content].taskDate;
         let tDescription = information[content].taskDescription;
-        let tPriority = information[content].priorVal;
+        let finalPriority;
+
+        switch (information[content].priorVal) {
+            case '1':
+                finalPriority = 'Important';
+                break;
+            case '2':
+                finalPriority = 'Medium';
+                break;
+            case '3':
+                finalPriority = 'Little';
+                break;
+            default:
+                break;
+        }
+
         dateOrderedData.push(information[content]);
 
         card.innerHTML += `
         <div class="card-task">
-            <div class="card-task-header important">
-            <p class="priority-category">${tPriority}</p>
+            <div class="card-task-header ${finalPriority}" id="card-task-header">
+            <p class="priority-category">${finalPriority}</p>
         </div>
         <div class="card-task-header-info">
             <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
@@ -73,6 +86,7 @@ function getData(data) {
         </div>
         `;
     }
+
     dateOrderedData.sort((a, b) =>
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );

@@ -123,6 +123,10 @@ article {
         flex-direction: column;
         justify-content: center;
 
+        .select-container {
+            padding-bottom: 0.8em;
+        }
+
         .card-task {
             background-color: rgb(255, 255, 255);
             border-radius: 7px;
@@ -145,17 +149,17 @@ article {
                 color: white;
                 border-radius: 6px 6px 0 0;
 
-                &.important {
+                &.Important {
                     background: #d82335;
                     background: -webkit-linear-gradient(to left, #f04526, #d82335);
                     background: linear-gradient(to left, #f04526, #d82335);
                 }
-                &.medium {
+                &.Medium {
                     background: #fdc830;
                     background: -webkit-linear-gradient(to right, #f37335, #fdc830);
                     background: linear-gradient(to right, #f37335, #fdc830);
                 }
-                &.little {
+                &.Little {
                     background: #11998e;
                     background: -webkit-linear-gradient(to left, #38ef7d, #11998e);
                     background: linear-gradient(to left, #38ef7d, #11998e);

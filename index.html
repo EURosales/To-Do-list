@@ -31,12 +31,20 @@
             </section>
             <article class="content-viewer">
                 <div class="task-viewer">
-
+                    <div class="select-container">
+                        <label for="taskSorter">Sort tasks by:</label>
+                        <select name="" id="taskSorter">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
                     <!--Aqui iran las tajetas por cada tarjeta (cada tarjeta es una tarea)-->
                     <div class="card"></div>
 
                 </div>
-                <div class="task-register hide">
+                <div class="task-register">
                     <!--Aqui sehace el registro de nuevas tareas-->
                     <form action="post" name="taskRegisterForm" id="taskRegisterForm">
                         <div class="input-field">

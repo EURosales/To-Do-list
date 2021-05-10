@@ -1,5 +1,3 @@
-//EDUARDO, lo que vas a seguir haciendo es viendo como mostras las tareas filtradas, lo que lograste en la mañana es mostrarlas cuando se selecciona un opcion del select, pero ahorita solo se muestran los de la base, sin ordenar.
-
 document.getElementById('taskRegisterForm').addEventListener('submit', saveTask);
 const card = document.querySelector('.card');
 const cardHeader = document.getElementById('card-task-header');
@@ -51,63 +49,65 @@ function saveData(taskName, taskDate, taskDescription, priorVal) {
 //Fetch data
 let ref = firebase.database().ref('Tasks');
 ref.on('value', getData);
-// let tName;
-// let tTime;
-// let tDescription;
-// let finalPriority;
-// let pri = '';
-let information, keys;
+let tName;
+let tTime;
+let tDescription;
+let finalPriority;
+let pri = '';
+
 function getData(data) {
-    information = data.val();
-    keys = Object.keys(information);
+    let information = data.val();
+    let keys = Object.keys(information);
 
-    // for (let i = 0; i < keys.length; i++) {
-    //     let content = keys[i];
+    for (let i = 0; i < keys.length; i++) {
+        let content = keys[i];
 
-    //     let tName = information[content].taskName;
-    //     let tTime = information[content].taskDate;
-    //     let tDescription = information[content].taskDescription;
-    //     //pri = information[content].priorVal
-    //     let finalPriority;
+        tName = information[content].taskName;
+        tTime = information[content].taskDate;
+        tDescription = information[content].taskDescription;
+        pri = information[content].priorVal
+        finalPriority;
 
-    //     switch (information[content].priorVal) {
-    //         case '1':
-    //             finalPriority = 'Important';
-    //             break;
-    //         case '2':
-    //             finalPriority = 'Medium';
-    //             break;
-    //         case '3':
-    //             finalPriority = 'Little';
-    //             break;
-    //         default:
-    //             break;
-    //     }
+        // switch (information[content].priorVal) {
+        //     case '1':
+        //         finalPriority = 'Important';
+        //         break;
+        //     case '2':
+        //         finalPriority = 'Medium';
+        //         break;
+        //     case '3':
+        //         finalPriority = 'Little';
+        //         break;
+        //     default:
+        //         break;
+        // }
 
-    //     dateOrderedData.push(information[content]);
-    //     //console.log(dateOrderedData);
-    //     card.innerHTML += `
-    //     <div class="card-task">
-    //         <div class="card-task-header ${finalPriority}" id="card-task-header">
-    //         <p class="priority-category">Prioriry: ${finalPriority}</p>
-    //     </div>
-    //     <div class="card-task-header-info">
-    //         <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
-    //         <span class="card-task-date">Due: ${tTime}</span>
-    //     </div>
-    //     <div class="card-task-body-info">
-    //         <p class="card-description">${tDescription}</p>
-    //     </div>
-    //     <div class="card-task-footer">
-    //         <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
-    //     </div>
-    //     </div>
-    //     `;
-    // }
+        dateOrderedData.push(information[content]);
+        //console.log(dateOrderedData);
+        // card.innerHTML += `
+        // <div class="card-task">
+        //     <div class="card-task-header ${finalPriority}" id="card-task-header">
+        //     <p class="priority-category">Prioriry: ${finalPriority}</p>
+        // </div>
+        // <div class="card-task-header-info">
+        //     <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
+        //     <span class="card-task-date">Due: ${tTime}</span>
+        // </div>
+        // <div class="card-task-body-info">
+        //     <p class="card-description">${tDescription}</p>
+        // </div>
+        // <div class="card-task-footer">
+        //     <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
+        // </div>
+        // </div>
+        // `;
+
+
+    }
     dateOrderedData.sort((a, b) =>
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );
-    return information, keys;
+    return tName, tTime, tDescription, finalPriority, pri, dateOrderedData;
 
     //return tName, tTime, tDescription, finalPriority, pri, dateOrderedData;
 }
@@ -150,17 +150,11 @@ function orderTasks(selectedOption) {
 let lastArray = [];
 
 function displayTasks(dataArray) {
+    console.log(dataArray);
+    lastArray = dataArray;
+    for (let index = 0; index < lastArray.length; index++) {
 
-    for (let i = 0; i < keys.length; i++) {
-        let content = keys[i];
-
-        let tName = information[content].taskName;
-        let tTime = information[content].taskDate;
-        let tDescription = information[content].taskDescription;
-        //pri = information[content].priorVal
-        let finalPriority;
-
-        switch (information[content].priorVal) {
+        switch (pri) {
             case '1':
                 finalPriority = 'Important';
                 break;
@@ -174,15 +168,13 @@ function displayTasks(dataArray) {
                 break;
         }
 
-        dateOrderedData.push(information[content]);
-        //console.log(dateOrderedData);
         card.innerHTML += `
         <div class="card-task">
             <div class="card-task-header ${finalPriority}" id="card-task-header">
             <p class="priority-category">Prioriry: ${finalPriority}</p>
         </div>
         <div class="card-task-header-info">
-            <h3 class="card-task-Title">${i + 1}: ${tName}</h3>
+            <h3 class="card-task-Title">${index + 1}: ${tName}</h3>
             <span class="card-task-date">Due: ${tTime}</span>
         </div>
         <div class="card-task-body-info">
@@ -193,45 +185,8 @@ function displayTasks(dataArray) {
         </div>
         </div>
         `;
-
+        //const element = dataArray[index];
 
     }
-    // console.log(dataArray);
-    // lastArray = dataArray;
-    // for (let index = 0; index < lastArray.length; index++) {
-
-    //     switch (pri) {
-    //         case '1':
-    //             finalPriority = 'Important';
-    //             break;
-    //         case '2':
-    //             finalPriority = 'Medium';
-    //             break;
-    //         case '3':
-    //             finalPriority = 'Little';
-    //             break;
-    //         default:
-    //             break;
-    //     }
-
-    //     card.innerHTML += `
-    //     <div class="card-task">
-    //         <div class="card-task-header ${finalPriority}" id="card-task-header">
-    //         <p class="priority-category">Prioriry: ${finalPriority}</p>
-    //     </div>
-    //     <div class="card-task-header-info">
-    //         <h3 class="card-task-Title">${index + 1}: ${tName}</h3>
-    //         <span class="card-task-date">Due: ${tTime}</span>
-    //     </div>
-    //     <div class="card-task-body-info">
-    //         <p class="card-description">${tDescription}</p>
-    //     </div>
-    //     <div class="card-task-footer">
-    //         <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
-    //     </div>
-    //     </div>
-    //     `;
-    //     //const element = dataArray[index];
-    // }
     console.log(card);
 }

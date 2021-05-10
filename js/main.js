@@ -101,13 +101,13 @@ function getData(data) {
 
     //filtrados por prioridad
 
-    onlyHigh = dateOrderedData.filter((prior) => prior.priorVal == '1');
+    onlyHigh = dateOrderedData.filter((priority) => priority.priorVal == '1');
     console.log(onlyHigh);
 
-    onlyMid = dateOrderedData.filter((prior) => prior.priorVal == '2');
+    onlyMid = dateOrderedData.filter((priority) => priority.priorVal == '2');
     console.log(onlyMid);
 
-    onlyLittle = dateOrderedData.filter((prior) => prior.priorVal == '3');
+    onlyLittle = dateOrderedData.filter((priority) => priority.priorVal == '3');
     console.log(onlyLittle);
 
     //de mayor a menor prioridad

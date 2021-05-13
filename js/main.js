@@ -1,7 +1,39 @@
+// document.getElementById('taskRegisterForm').addEventListener('submit', () => {
+//     //e.preventDefault();
+//     //card.innerHTML = '';
+//     saveTask();
+// });
+
 document.getElementById('taskRegisterForm').addEventListener('submit', saveTask);
+
 const card = document.querySelector('.card');
 const cardHeader = document.getElementById('card-task-header');
 const priorityLevel = document.querySelector('.priority-category');
+const newTaskBtn = document.querySelector('.new-task');
+const taskRegister = document.querySelector('.task-register');
+const taskViewer = document.querySelector('.task-viewer');
+const contentTitle = document.querySelector('.title');
+
+newTaskBtn.addEventListener('click', () => {
+    taskRegister.classList.toggle('hide');
+    taskViewer.classList.toggle('hide');
+    btnText();
+});
+
+//newTaskBtn.innerHTML == '<i class="fas fa-tasks"></i> View tasks'
+//< i class="fas fa-plus-circle" ></i > New Task
+function btnText() {
+    if (contentTitle.innerText == 'All Tasks') {
+        contentTitle.innerText = 'New Task';
+    } else {
+        contentTitle.innerText = 'All Tasks'
+    }
+    if (newTaskBtn.innerHTML == '<i class="fas fa-tasks"></i> View tasks') {
+        newTaskBtn.innerHTML = '<i class="fas fa-plus-circle"></i> New Task';
+    } else {
+        newTaskBtn.innerHTML = '<i class="fas fa-tasks"></i> View tasks';
+    }
+}
 
 let priority,
     onlyHigh,
@@ -13,8 +45,12 @@ let priority,
     rawData = [];
 let byDate = [];
 
-// selectedOption = document.getElementById('taskSorter').value;
-// window.addEventListener('ready', orderTasks(selectedOption));
+// window.addEventListener('load', () => {
+//     //selectedOption = document.getElementById('taskSorter').value;
+//     //console.log(selectedOption);
+//     orderTasks(selectedOption);
+//     console.log(selectedOption)
+// });
 
 document.getElementById('taskSorter').addEventListener('change', () => {
     selectedOption = document.getElementById('taskSorter').value;
@@ -24,12 +60,15 @@ document.getElementById('taskSorter').addEventListener('change', () => {
 function saveTask(e) {
     e.preventDefault();
     //get value from inputs
+    location.reload();
     let taskName = getInputVal('taskName');
     let taskDate = getInputVal('taskDate');
     let taskDescription = getInputVal('taskDescription');
     let priorVal = document.forms['taskRegisterForm']['priority'].value;
     empty(taskName, taskDate, taskDescription, priorVal);
-    //getData();
+    card.innerHTML = '';
+    document.getElementById('taskSorter').value = '0';
+
 }
 
 function getInputVal(id) {
@@ -57,64 +96,62 @@ ref.on('value', getData);
 function getData(data) {
     let information = data.val();
     let keys = Object.keys(information);
-
     for (let i = 0; i < keys.length; i++) {
         let content = keys[i];
         rawData.push(information[content]);
     }
-    //console.log(rawData);
+
     byDate = rawData.sort((a, b) =>
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );
-    //console.log(byDate);
+
     return byDate;
 }
 
 function orderTasks(selectedOption) {
-    console.log(byDate, 'byDate FUERA DE CASO DEL SWITCH');
+    card.innerHTML = '';
     switch (selectedOption) {
         case '0':
+            card.innerHTML = '';
             byDate = rawData.sort((a, b) =>
                 a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
             );
             displayTasks(byDate);
             break
         case '1':
+            card.innerHTML = '';
             highToLow = byDate.sort((a, b) =>
                 a.priorVal < b.priorVal ? -1 : a.priorVal > b.priorVal ? 1 : 0
             );
-            console.log(selectedOption);
-            console.log(byDate, 'byDate');
-            console.log(highToLow, 'highToLow');
             displayTasks(highToLow);
             break;
         case '2':
+            card.innerHTML = '';
             lowToHigh = byDate.sort((a, b) =>
                 b.priorVal < a.priorVal ? -1 : b.priorVal > a.priorVal ? 1 : 0
             );
             displayTasks(lowToHigh);
             break;
         case '3':
+            card.innerHTML = '';
             onlyHigh = byDate.filter((prior) => prior.priorVal == '1');
             displayTasks(onlyHigh);
             break;
         case '4':
+            card.innerHTML = '';
             onlyMid = byDate.filter((prior) => prior.priorVal == '2');
             displayTasks(onlyMid);
             break;
         case '5':
+            card.innerHTML = '';
             onlyLittle = byDate.filter((prior) => prior.priorVal == '3');
             displayTasks(onlyLittle);
-            break;
-        default:
-            displayTasks(byDate);
             break;
     }
 }
 
 function displayTasks(dataArray) {
     card.innerHTML = '';
-    console.log('se ejecuto displayTask()')
     for (let index = 0; index < dataArray.length; index++) {
         const nombre = dataArray[index].taskName;
         const fecha = dataArray[index].taskDate;
@@ -148,6 +185,6 @@ function displayTasks(dataArray) {
                 <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
             </div>
             </div>
-            `;
+        `;
     }
 }

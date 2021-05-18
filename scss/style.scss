@@ -12,13 +12,13 @@ $title-typo: 'IBM Plex Sans', sans-serif;
 }
 
 body {
-	background: hsla(213, 62%, 45%, 1);
-	background: linear-gradient(
-		300deg,
-		hsla(213, 62%, 45%, 1) 0%,
-		hsla(203, 89%, 71%, 1) 50%,
-		hsla(0, 0%, 96%, 1) 100%
-	);
+	background: rgb(255, 255, 255);
+	// background: linear-gradient(
+	// 	300deg,
+	// 	hsla(213, 62%, 45%, 1) 0%,
+	// 	hsla(203, 89%, 71%, 1) 50%,
+	// 	hsla(0, 0%, 96%, 1) 100%
+	// );
 	padding: 2.5vh 1rem;
 }
 

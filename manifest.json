@@ -1,7 +1,7 @@
 {
 	"name": "Tasks",
 	"short_name": "Tasks",
-	"start_url": "/?home=true",
+	"start_url": "index.html",
 	"icons": [
 		{
 			"src": "icons/manifest-icon-192.png",

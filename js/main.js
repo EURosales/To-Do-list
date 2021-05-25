@@ -185,4 +185,9 @@ function displayTasks(dataArray) {
             </div>
         `;
     }
+    card.innerHTML += `
+        <div class="btt-btn-container">
+                <a class="btt-button" href="#ts">Back to top</a>
+            </div>
+    `;
 }

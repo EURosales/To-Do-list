@@ -20,8 +20,6 @@ newTaskBtn.addEventListener('click', () => {
     btnText();
 });
 
-//newTaskBtn.innerHTML == '<i class="fas fa-tasks"></i> View tasks'
-//< i class="fas fa-plus-circle" ></i > New Task
 function btnText() {
     if (contentTitle.innerText == 'All Tasks') {
         contentTitle.innerText = 'New Task';

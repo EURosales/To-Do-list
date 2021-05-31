@@ -1,8 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700);
 @import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700);
 
+@import './breakpoints';
+
 //$title-typo: 'Quicksand', sans-serif;
 $title-typo: 'IBM Plex Sans', sans-serif;
+
 * {
 	font-family: $title-typo;
 	margin: 0;
@@ -233,6 +236,7 @@ article {
 
 				p {
 					font-weight: 400;
+					word-wrap: initial;
 				}
 			}
 

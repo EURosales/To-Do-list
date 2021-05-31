@@ -1,9 +1,3 @@
-// document.getElementById('taskRegisterForm').addEventListener('submit', () => {
-//     //e.preventDefault();
-//     //card.innerHTML = '';
-//     saveTask();
-// });
-
 document.getElementById('taskRegisterForm').addEventListener('submit', saveTask);
 
 const card = document.querySelector('.card');
@@ -179,11 +173,21 @@ function displayTasks(dataArray) {
             <div class="card-task-body-info">
                 <p class="card-description">${descripcion}</p>
             </div>
-            <div class="card-task-footer">
-                <button onclick="func_Dat_Deletes_Card();"><i class="fas fa-check"></i> Mark as completed</button>
-            </div>
+            <!--<div class="card-task-footer">
+                <button class="btn-complete" ><i class="fas fa-check"></i> Mark as completed</button>
+            </div> -->
+            
             </div>
         `;
+
+        // const btnComplete = document.querySelectorAll('.btn-complete');
+        // //console.log(btnComplete);
+        // btnComplete.forEach(btn => {
+        //     //console.log(btn);
+        //     btn.addEventListener("click", () => {
+        //         console.log('clicked');
+        //     });
+        // });
     }
     card.innerHTML += `
         <div class="btt-btn-container">

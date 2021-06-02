@@ -4,22 +4,25 @@ const card = document.querySelector('.card');
 const cardHeader = document.getElementById('card-task-header');
 const priorityLevel = document.querySelector('.priority-category');
 const newTaskBtn = document.querySelector('.new-task');
-const taskRegister = document.querySelector('.task-register');
+const taskRegister = document.getElementById('taskRegister');
 const taskViewer = document.querySelector('.task-viewer');
 const contentTitle = document.querySelector('.title');
 
 newTaskBtn.addEventListener('click', () => {
     taskRegister.classList.toggle('hide');
     taskViewer.classList.toggle('hide');
+    taskRegister.classList.toggle('test');
     btnText();
 });
 
 function btnText() {
+
     if (contentTitle.innerText == 'All Tasks') {
         contentTitle.innerText = 'New Task';
     } else {
         contentTitle.innerText = 'All Tasks'
     }
+
     if (newTaskBtn.innerHTML == '<i class="fas fa-tasks"></i> View tasks') {
         newTaskBtn.innerHTML = '<i class="fas fa-plus-circle"></i> New Task';
     } else {
@@ -35,7 +38,26 @@ let priority,
     lowToHigh,
     selectedOption,
     rawData = [];
-let byDate = [];
+byDate = [];
+
+window.addEventListener('DOMContentLoaded', () => {
+    checkSize();
+})
+
+window.addEventListener('resize', () => {
+    checkSize();
+});
+
+function checkSize() {
+    if (window.screen.width < 1100) {
+        newTaskBtn.disabled = false;
+    }
+
+    if (window.screen.width >= 1100) {
+        taskRegister.classList.remove('hide');
+        newTaskBtn.disabled = true;
+    }
+}
 
 // window.addEventListener('load', () => {
 //     //selectedOption = document.getElementById('taskSorter').value;
@@ -195,3 +217,5 @@ function displayTasks(dataArray) {
             </div>
     `;
 }
+
+

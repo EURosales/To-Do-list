@@ -118,10 +118,11 @@ section {
 
 article {
 	margin: 0.5rem 0.5rem 1rem 0.5rem;
+	display: flex;
+	flex-direction: column;
 
 	.task-viewer {
-		height: 60vh;
-		max-height: 60vh;
+		max-height: 63vh;
 		overflow-y: auto;
 		overflow-x: hidden;
 		border-radius: 6px;
@@ -277,7 +278,6 @@ article {
 		padding: 0.3rem;
 
 		.input-field {
-			//border: 1px solid red;
 			margin: 0.5rem 0;
 			padding: 0.2rem 0.8rem;
 			display: flex;
@@ -486,6 +486,10 @@ footer {
 
 .hide {
 	display: none !important;
+}
+
+.test {
+	display: block !important;
 }
 
 .empty-wrong {

@@ -42,3 +42,48 @@
 		}
 	}
 }
+
+@media (max-width: 1099px) {
+	.task-register {
+		display: none;
+	}
+
+	.new-task {
+		visibility: visible;
+	}
+}
+
+@media (min-width: 1099px) {
+	main {
+		
+		section {
+			a {
+				display: none;
+			}
+		}
+
+		article {
+			display: flex;
+			flex-direction: row-reverse !important;
+			flex-wrap: wrap;
+
+			.task-viewer {
+				width: 69% !important;
+				max-height: 80vh !important;
+				overflow-y: auto;
+				overflow-x: hidden;
+				margin-left: 0.5%;
+			}
+
+			.task-register {
+				width: 30% !important;
+				margin-right: 0.5%;
+			}
+
+			.info-me {
+				margin-top: 0.5rem;
+				width: 100%;
+			}
+		}
+	}
+}

@@ -15,6 +15,7 @@ newTaskBtn.addEventListener('click', () => {
     btnText();
 });
 
+//btn-icon
 function btnText() {
 
     if (contentTitle.innerText == 'All Tasks') {
@@ -59,13 +60,7 @@ function checkSize() {
     }
 }
 
-// window.addEventListener('load', () => {
-//     //selectedOption = document.getElementById('taskSorter').value;
-//     //console.log(selectedOption);
-//     orderTasks(selectedOption);
-//     console.log(selectedOption)
-// });
-
+//select
 document.getElementById('taskSorter').addEventListener('change', () => {
     selectedOption = document.getElementById('taskSorter').value;
     orderTasks(selectedOption);
@@ -110,6 +105,7 @@ ref.on('value', getData);
 function getData(data) {
     let information = data.val();
     let keys = Object.keys(information);
+
     for (let i = 0; i < keys.length; i++) {
         let content = keys[i];
         rawData.push(information[content]);
@@ -119,51 +115,43 @@ function getData(data) {
         a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
     );
 
+    //all data ordered by date
     return byDate;
 }
 
 function orderTasks(selectedOption) {
-    card.innerHTML = '';
     switch (selectedOption) {
         case '0':
-            card.innerHTML = '';
             byDate = rawData.sort((a, b) =>
-                a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0
-            );
+                a.taskDate < b.taskDate ? -1 : a.taskDate > b.taskDate ? 1 : 0);
             displayTasks(byDate);
             break
         case '1':
-            card.innerHTML = '';
             highToLow = byDate.sort((a, b) =>
-                a.priorVal < b.priorVal ? -1 : a.priorVal > b.priorVal ? 1 : 0
-            );
+                a.priorVal < b.priorVal ? -1 : a.priorVal > b.priorVal ? 1 : 0);
             displayTasks(highToLow);
             break;
         case '2':
-            card.innerHTML = '';
             lowToHigh = byDate.sort((a, b) =>
-                b.priorVal < a.priorVal ? -1 : b.priorVal > a.priorVal ? 1 : 0
-            );
+                b.priorVal < a.priorVal ? -1 : b.priorVal > a.priorVal ? 1 : 0);
             displayTasks(lowToHigh);
             break;
         case '3':
-            card.innerHTML = '';
             onlyHigh = byDate.filter((prior) => prior.priorVal == '1');
             displayTasks(onlyHigh);
             break;
         case '4':
-            card.innerHTML = '';
             onlyMid = byDate.filter((prior) => prior.priorVal == '2');
             displayTasks(onlyMid);
             break;
         case '5':
-            card.innerHTML = '';
             onlyLittle = byDate.filter((prior) => prior.priorVal == '3');
             displayTasks(onlyLittle);
             break;
     }
 }
 
+//card creation for every task
 function displayTasks(dataArray) {
     card.innerHTML = '';
     for (let index = 0; index < dataArray.length; index++) {
@@ -171,6 +159,7 @@ function displayTasks(dataArray) {
         const fecha = dataArray[index].taskDate;
         const prioridad = dataArray[index].priorVal;
         const descripcion = dataArray[index].taskDescription;
+
         switch (prioridad) {
             case '1':
                 finalPriority = 'Important';
@@ -201,16 +190,8 @@ function displayTasks(dataArray) {
             
             </div>
         `;
-
-        // const btnComplete = document.querySelectorAll('.btn-complete');
-        // //console.log(btnComplete);
-        // btnComplete.forEach(btn => {
-        //     //console.log(btn);
-        //     btn.addEventListener("click", () => {
-        //         console.log('clicked');
-        //     });
-        // });
     }
+
     card.innerHTML += `
         <div class="btt-btn-container">
                 <a class="btt-button" href="#ts">Back to top</a>
